@@ -1,0 +1,46 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  mustache:
+    check-template-location: false
+  jpa:
+    defer-datasource-initialization: true
+  data:
+    mongodb:
+      uri: ${MONGO_SERVER_URL}
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  ai:
+    ollama:
+      chat:
+        model: llama3.1
+vaadin:
+  launch-browser: true
+# To improve the performance during development.
+# For more information https://vaadin.com/docs/latest/integrations/spring/configuration#special-configuration-parameters
+  allowed-packages: com.vaadin,org.vaadin,dev.hilla,com.flowingcode
+
+langchain4j:
+  open-ai:
+    chat-model:
+      log-requests: true
+      log-responses: true
+
+logging:
+  level:
+    root: DEBUG
+
+assistant-ia-integration:
+  open-ai:
+    apiKey: ${OPEN_AI_API_KEY}
+  redis:
+    client:
+      host: ${REDIS_CLIENT_HOST}
+      user: ${REDIS_CLIENT_USER}
+      password: ${REDIS_CLIENT_PASSWORD}
+      port: ${REDIS_CLIENT_PORT}
+      index: ${REDIS_INDEX}
+      dimensions: ${EMBEDDING_DIMENSIONS}
